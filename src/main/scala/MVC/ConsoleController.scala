@@ -18,6 +18,8 @@ class ConsoleController(args:Array[String],model:Model) {
     }
   }
   def run(): Unit = {
+    if(args.length==0)
+      model.setError("No arguments provided")
     while(i<args.length  ){
       if(model.getError.nonEmpty)
         return ()

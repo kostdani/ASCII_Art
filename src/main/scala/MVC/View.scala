@@ -11,12 +11,14 @@ class View(model:Model) extends (((String,String=>Unit)=>Unit)=>Unit) {
       to += w
     }
     res
-
   }
+  // if model is ok writes out image if there is error writes out error
   override def apply(write: (String,String=>Unit)=>Unit): Unit =  {
     if(model.getError.isEmpty) {
-      val towrite=placeNewlines(model.getImage.get_data().map(model.getTransform).mkString,model.getImage.get_width())
-      write(towrite,model.setError)
+      if(model.getImage.get_data().nonEmpty) {
+        val towrite = placeNewlines(model.getImage.get_data().map(model.getTransform).mkString, model.getImage.get_width())
+        write(towrite, model.setError)
+      }
     } else
       write(model.getError,model.setError)
   }

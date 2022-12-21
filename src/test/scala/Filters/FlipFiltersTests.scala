@@ -3,14 +3,14 @@ import org.scalatest.FunSuite
 import DataModel.Image
 import Inputs.RandomInput
 class FlipFiltersTests extends FunSuite {
-  test("Horizontal flip"){
+  test("Simple horizontal flip"){
 
     val img = new Image(Vector(255, 100, 0, 25), 2)
     val invimg = HorizontalFlipFilter(img)
     assert(invimg.get_width() == img.get_width())
     assert(invimg.get_data() == Vector(100.0, 255.0, 25.0, 0.0))
   }
-  test("Vertical flip") {
+  test("Simple vertical flip") {
 
     val img = new Image(Vector(255, 100, 0, 25), 2)
     val invimg = VerticalFlipFilter(img)

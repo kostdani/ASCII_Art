@@ -1,8 +1,6 @@
 package Outputs
 import org.scalatest.FunSuite
 
-import java.io.File
-
 class FileOutputTests extends FunSuite {
   test("wrong filepath") {
     var err: String = ""
@@ -14,9 +12,7 @@ class FileOutputTests extends FunSuite {
     var err: String = ""
     val output = new FileOutput("tmp.txt")
     val res = output("testing Message", (str: String) => err = str)
-    val file=new File("tmp.txt")
     assert(scala.io.Source.fromFile("tmp.txt").mkString=="testing Message")
-    file.delete()
 
   }
 }

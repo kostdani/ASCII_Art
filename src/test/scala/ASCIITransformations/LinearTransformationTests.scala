@@ -1,6 +1,5 @@
 package ASCIITransformations
 
-import Inputs.RandomInput
 import org.scalatest.FunSuite
 
 class LinearTransformationTests extends FunSuite{

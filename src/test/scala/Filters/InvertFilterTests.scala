@@ -21,7 +21,7 @@ class InvertFilterTests extends FunSuite {
         assert(sum.forall(_ == 255))
       }
     }
-    test("twice inverion neutralisation"){
+    test("twice inversion neutralisation"){
       for (i<- 0 until 10){
         val img= RandomInput(println)
         assert(img==InvertFilter(InvertFilter(img)))

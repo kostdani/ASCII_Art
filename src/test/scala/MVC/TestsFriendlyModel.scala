@@ -9,7 +9,7 @@ import Outputs.{ConsoleOutput, FileOutput}
 import scala.collection.mutable.ArrayBuffer
 
 // model with some changed methods for convinient testing
-object TestsFriendlyModel extends Model{
+class TestsFriendlyModel() extends Model{
   var str = ""
   def setError(err: String): Unit = {
     error = err
@@ -17,9 +17,6 @@ object TestsFriendlyModel extends Model{
   def setImage(img:Image): Unit = {
     image=img
   }
-  val inputs=ArrayBuffer.empty[(String => Unit) => Image]
-  val outputs = ArrayBuffer.empty[(String, String => Unit) => Unit]
-  val filters = ArrayBuffer.empty[ Image => Image]
   override def input(in: (String => Unit) => Image): Unit = {
     in match {
       case fi:FileInput => str+="--image "+fi.getPath+" "

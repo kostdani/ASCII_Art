@@ -10,7 +10,7 @@ class ViewTests extends FunSuite {
   }
   test("Image to string transformation testing"){
     var res=""
-    val model = TestsFriendlyModel
+    val model = new TestsFriendlyModel
     model.setTransform(testtransform)
     val view=new View(model)
 
@@ -21,7 +21,7 @@ class ViewTests extends FunSuite {
   test("View empty image") {
     var res = ""
 
-    val model = TestsFriendlyModel
+    val model = new TestsFriendlyModel
     model.setTransform(testtransform)
     val view = new View(model)
 

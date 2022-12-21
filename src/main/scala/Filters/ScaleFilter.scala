@@ -1,6 +1,6 @@
 package Filters
 import DataModel.Image
-// scaling filter
+// Scalling filter
 class ScaleFilter(scale:Double) extends Filter {
   // Shrink image by s times
   def scaleUp(img:Image,s:Int):Image ={

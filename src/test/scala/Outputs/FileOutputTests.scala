@@ -13,9 +13,9 @@ class FileOutputTests extends FunSuite {
   test("test writing out to file") {
     var err: String = ""
     val output = new FileOutput("tmp.txt")
-    val res = output("test", (str: String) => err = str)
+    val res = output("testing Message", (str: String) => err = str)
     val file=new File("tmp.txt")
-    assert(scala.io.Source.fromFile("tmp.txt").mkString=="test")
+    assert(scala.io.Source.fromFile("tmp.txt").mkString=="testing Message")
     file.delete()
 
   }

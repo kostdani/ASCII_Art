@@ -1,0 +1,5 @@
+package Inputs
+
+class FileInputTests {
+
+}

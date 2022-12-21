@@ -2,7 +2,7 @@ package Inputs
 import DataModel.Image
 // generaate random image with random size
 object RandomInput extends Input {
-  override def apply():Image={
+  override def apply(errl:String=>Unit):Image={
     val rand = new scala.util.Random
     val w=rand.between(10,50)
     val h=rand.between(10,50)

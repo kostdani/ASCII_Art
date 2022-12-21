@@ -20,6 +20,8 @@ class ConsoleController(args:Array[String],model:Model) {
   }
   def run(): Unit = {
     while(i<args.length  ){
+      if(model.getError.nonEmpty)
+        return ()
       args(i) match{
         case "--image" =>
           if (!forward(1)) {

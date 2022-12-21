@@ -1,10 +1,23 @@
 package MVC
+class View(model:Model) extends (((String,String=>Unit)=>Unit)=>Unit) {
+  // given function for replacing doubles with characters generates string with \n each w chars
+  def placeNewlines(str:String,w:Int):String={
+    var res = ""
+    var from = 0
+    var to = w
+    while (to <= str.length) {
+      res += str.slice (from, to) + "\n"
+      from = to
+      to += w
+    }
+    res
 
-class View(model:Model) extends ((String=>Unit)=>Unit) {
-  override def apply(write: String=>Unit): Unit =  {
-    if(model.getError.isEmpty)
-      write(model.getImage.to_string(model.getTransform))
-    else
-      write(model.getError)
+  }
+  override def apply(write: (String,String=>Unit)=>Unit): Unit =  {
+    if(model.getError.isEmpty) {
+      val towrite=placeNewlines(model.getImage.get_data().map(model.getTransform).mkString,model.getImage.get_width())
+      write(towrite,model.setError)
+    } else
+      write(model.getError,model.setError)
   }
 }

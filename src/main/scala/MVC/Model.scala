@@ -7,7 +7,7 @@ class Model() {
   private var error=""
   def setError(err:String): Unit = {
     error=err
-    view(print)
+    view((s:String,e:String=>Unit)=>println(s))
   }
   def getError:String = {
     error
@@ -18,8 +18,8 @@ class Model() {
     image
   }
 
-  private var view:(String=>Unit)=>Unit= (_:String=>Unit)=>_
-  def setView(f:(String=>Unit)=>Unit): Unit = {
+  private var view:((String,String=>Unit)=>Unit)=>Unit= (_:((String,String=>Unit)=>Unit)=>Unit)=>_
+  def setView(f:((String,String=>Unit)=>Unit)=>Unit): Unit = {
     view=f
   }
 
@@ -30,35 +30,30 @@ class Model() {
   def getTransform:ASCIITransformation = {
     transformation
   }
-  def checkImage():
-  Unit = {
 
-    if (error.isEmpty)
-      image match {
-        case _: NoImage.type =>
-          setError("No specified image")
-          view(println)
-        case _ =>
-      }
-  }
-
-  def input(in:Input): Unit = {
+  // supplied with function whose argument is error function uses this function to get image
+  def input(in:(String=>Unit)=>Image): Unit = {
     image match {
-      case _:NoImage.type => image=in()
+      case _:NoImage.type => image=in(setError)
       case _ =>
         setError("Only one image is allowed")
-        view(println)
     }
   }
-
-  def output(out:Output): Unit = {
-    checkImage()
-    if(error.isEmpty)
-      view(out)
+  // supplied with function whose arguments are string and eror function uses this function to write out image
+  def output(out:(String,String=>Unit)=>Unit): Unit = {
+    image match {
+      case _: NoImage.type =>
+        setError("No specified image. Cannot export it")
+      case _ => view(out)
+    }
   }
+  // called with function transforming image to image aplies this ufunction to stored image and stores new image
   def action(act: Image => Image): Unit = {
-    checkImage()
-    if(error.isEmpty)
-      image = act(image)
+
+    image match {
+      case _: NoImage.type =>
+        setError("No specified image. Cannot apply filter")
+      case _ => image=act(image)
+    }
   }
 }

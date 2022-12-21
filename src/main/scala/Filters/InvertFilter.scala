@@ -1,5 +1,6 @@
 package Filters
 import DataModel.Image
+
 // inversion filter
 object InvertFilter extends Filter {
   override def apply(img: Image): Image = {

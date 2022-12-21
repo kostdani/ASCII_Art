@@ -1,4 +1,4 @@
 package Outputs
 
-// output is function aplyied to string
-trait Output extends (String=>Unit)
+// output is function with arguments for string to be exported and lambda for errors
+trait Output extends ((String,String=>Unit)=>Unit)

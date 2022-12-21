@@ -1,4 +1,5 @@
 package GrayScaling
+
 // grayscale function from tutorial
 object TutorialGrayScaler extends GrayScaler{
   override def apply (color:Int):Double={

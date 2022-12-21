@@ -6,6 +6,7 @@ import java.io.File
 import javax.imageio.ImageIO
 // Using imageio and given grayscaler to get grayscale image
 class FileInput(path:String, grayscale:GrayScaler) extends Input {
+  def getPath:String = path
   override def apply(errl:String=>Unit):Image={
     try {
       val file = new File(path)

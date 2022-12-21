@@ -3,6 +3,7 @@ package Outputs
 import java.io.{BufferedWriter, File, FileWriter}
 
 class FileOutput(path:String) extends Output{
+  def getPath:String=path
   override def apply(str: String,errl:String=>Unit): Unit = {
     try {
       val file = new File(path)

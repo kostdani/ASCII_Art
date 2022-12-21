@@ -2,6 +2,7 @@ package Filters
 import DataModel.Image
 // Scalling filter
 class ScaleFilter(scale:Double) extends Filter {
+  def getScale:Double=scale
   // Shrink image by s times
   def scaleUp(img:Image,s:Int):Image ={
     val newdata = 0 until img.get_data().length * s * s map {

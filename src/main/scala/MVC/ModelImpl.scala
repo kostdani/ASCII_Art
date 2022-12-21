@@ -8,6 +8,10 @@ class ModelImpl() extends Model {
     error=err
     view((s:String,e:String=>Unit)=>println(s))
   }
+
+  def setTransform(transform: ASCIITransformation): Unit = {
+    transformation = transform
+  }
   // supplied with function whose argument is error function uses this function to get image
   def input(in:(String=>Unit)=>Image): Unit = {
     image match {

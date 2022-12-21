@@ -21,9 +21,7 @@ trait Model {
     }
 
     var transformation:ASCIITransformation=PaulBourkeTransformation
-    def setTransform(transform: ASCIITransformation): Unit = {
-      transformation=transform
-    }
+    def setTransform(transform: ASCIITransformation): Unit
     def getTransform:ASCIITransformation = {
       transformation
     }

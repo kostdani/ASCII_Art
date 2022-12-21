@@ -8,7 +8,7 @@ import Outputs.{ConsoleOutput, FileOutput}
 
 import scala.collection.mutable.ArrayBuffer
 
-
+// model with some changed methods for convinient testing
 object TestsFriendlyModel extends Model{
   var str = ""
   def setError(err: String): Unit = {

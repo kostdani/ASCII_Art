@@ -1,13 +1,6 @@
 package MVC
-import ASCIITransformations.{ASCIITransformation, LinearTransformation, PaulBourkeTransformation, ShortPaulBourkeTransformation}
-import DataModel.Image
-import Filters.{Filter, HorizontalFlipFilter, InvertFilter, ScaleFilter, VerticalFlipFilter}
-import GrayScaling.TutorialGrayScaler
-import Inputs.{FileInput, Input, RandomInput}
-import Outputs.{ConsoleOutput, FileOutput, Output}
 import org.scalatest.FunSuite
 
-import scala.collection.mutable.ArrayBuffer
 class ConsoleControllerTests extends FunSuite {
 
   test ("random sequnce of commands commands"){

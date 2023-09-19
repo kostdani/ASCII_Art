@@ -1,13 +1,18 @@
 # ASCII Art
+The idea of this project is to load images, translate them into ASCII ART images, optionally apply filters, and save them to a file or print them to the console.
 
-[![pipeline status](https://gitlab.fit.cvut.cz/BI-OOP/B201/asciiart/badges/master/pipeline.svg)](https://gitlab.fit.cvut.cz/BI-OOP/B201/asciiart)
-
-The idea of this project is to load images, translate them into ASCII ART images, optionally apply filters, and save them. (https://courses.fit.cvut.cz/BI-OOP/projects/ASCII-art.html)
-
-## How to do it
-
-1. **Make your repository private**
-2. **Read [the instructions](https://courses.fit.cvut.cz/BI-OOP/projects/ASCII-art.html)**
-3. Play [lofi hip hop radio](https://www.youtube.com/watch?v=jfKfPfyJRdk)
-4. [???](https://www.youtube.com/watch?v=ZXsQAXx_ao0)
-5. Profit
+## Usage
+The program is run with the command like following:
+    ./run --image "../images/test-image.jpg" --rotate +90 --scale 0.25 --invert --output-console
+All commands are worked through sequentially one by one.
+Possible commands:
+* --image path: loads image
+* --random-image: generates random image with dimensions 10-30
+* --table {bourke|bourke-small}:select one of bourke conversion tables
+* --custom-table seq: use seq as conversion table
+* --output-console: rites image out to console
+* --output-file path: rites image out to file path
+* --scale n: scale to n times
+* --invert: inverts image
+* --{horizontal|vertial}-flip: flips image
+* --help writes this help info out
